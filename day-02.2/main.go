@@ -1,8 +1,9 @@
 package main
+
 import (
+	"bufio"
 	"fmt"
 	"os"
-	"bufio"
 	"strings"
 )
 
@@ -17,8 +18,9 @@ func main() {
 		value := scanner.Text()
 		oValue := string(value[0])
 		mySuggestedValue := string(value[2])
-		switch mySuggestedValue{
-		case "X":   { // need to loose against:
+		switch mySuggestedValue {
+		case "X":
+			{ // need to loose against:
 				if oValue == "A" { // rock
 					// i should be sissors
 					totalPoints = totalPoints + 3
@@ -30,7 +32,8 @@ func main() {
 					totalPoints = totalPoints + 2
 				}
 			}
-			case "Y":   { // need to tie
+		case "Y":
+			{ // need to tie
 				if oValue == "A" { // rock
 					// i should be rock
 					totalPoints = totalPoints + 1 + 3
@@ -42,7 +45,8 @@ func main() {
 					totalPoints = totalPoints + 3 + 3
 				}
 			}
-			case "Z":   { // need to win
+		case "Z":
+			{ // need to win
 				if oValue == "A" { // rock
 					// i should be paper
 					totalPoints = totalPoints + 2 + 6
