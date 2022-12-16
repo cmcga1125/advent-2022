@@ -8,6 +8,22 @@ import (
 
 func main() {
 	data := getFile("test.txt")
+	teams := buildTeams(data)
+	fmt.Println(teams)
+}
+
+// Team Building Exercise
+type team struct {
+	teamNumber int
+	members    []member
+}
+type member struct {
+	member int
+	start  byte
+	end    byte
+}
+
+func buildTeams(data []string) []team {
 	teams := make([]team, 0)
 	for k, v := range data {
 		elfMembers := make([]member, 0)
@@ -29,19 +45,8 @@ func main() {
 			members:    elfMembers,
 		})
 	}
-	fmt.Println(teams)
+	return teams
 }
-
-type team struct {
-	teamNumber int
-	members    []member
-}
-type member struct {
-	member int
-	start  byte
-	end    byte
-}
-
 func getFile(filename string) []string {
 	data, _ := os.ReadFile(fmt.Sprintf("./%v", filename))
 	splitData := strings.Split(string(data), "\n")
